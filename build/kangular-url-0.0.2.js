@@ -1,3 +1,10 @@
+/*
+ * kangular-url
+ * https://github.com/tsaikd/kangular-url
+ * 
+ * Version: 0.0.2 - 2014-01-18
+ * License: LGPLv3
+ */
 angular.module("kangular-url", [])
 
 // see https://gist.github.com/johan/3915545
