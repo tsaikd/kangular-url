@@ -11,10 +11,14 @@ module.exports = function(grunt) {
 				' * Version: <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
 				' * License: <%= pkg.license %>',
 				' */\n'
-			].join("\n")
+			].join("\n"),
+			dest: "."
 		},
 		clean: {
-			dist: ["build/*"]
+			dist: [
+				".tmp",
+				"<%= meta.dest %>/*.min.js"
+			]
 		},
 		concat: {
 			options: {
@@ -22,7 +26,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: ["src/**/*.js"],
-				dest: "build/<%= pkg.name %>-<%= pkg.version %>.js"
+				dest: ".tmp/<%= pkg.name %>.concat.js"
 			}
 		},
 		uglify: {
@@ -31,7 +35,7 @@ module.exports = function(grunt) {
 			},
 			build: {
 				src: ["<%= concat.dist.dest %>"],
-				dest: "build/<%= pkg.name %>-<%= pkg.version %>.min.js"
+				dest: "<%= meta.dest %>/<%= pkg.name %>.min.js"
 			}
 		}
 	});
